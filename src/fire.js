@@ -1,13 +1,13 @@
 import firebase from "firebase";
 
 var firebaseConfig = {
-  apiKey: "AIzaSyAS9SlERkZQc8_SJXLvsOf0A2mqSvtY-eA",
-  authDomain: "starfy-7a1d3.firebaseapp.com",
-  projectId: "starfy-7a1d3",
-  storageBucket: "starfy-7a1d3.appspot.com",
-  messagingSenderId: "528875774700",
-  appId: "1:528875774700:web:07477837b8e838acb43bc9",
-  measurementId: "G-F6R1LN3VG7"
+  apiKey: "AIzaSyCNJ7jsDW3bTnT1QM_The9N-mYQRyTP7kk",
+  authDomain: "colonstarfy.firebaseapp.com",
+  projectId: "colonstarfy",
+  storageBucket: "colonstarfy.appspot.com",
+  messagingSenderId: "873494844124",
+  appId: "1:873494844124:web:6f43272d7c0e8110f35a19",
+  measurementId: "G-7FWKRYW9ND"
 };
 
 const fire = firebase.initializeApp(firebaseConfig);
