@@ -376,7 +376,7 @@ const Formulario = (props) => {
 
                   <Grid item >
                     <Typography sx={{fontSize: 20, fontWeight: 600}} >{id !== '' ?
-                        "https://starfy.com.co/?s=" + id : "Sin Url"}</Typography>
+                        "https://colonstarfy.web.app/?s=" + id : "Sin Url"}</Typography>
                   </Grid>
 
                </Grid>
