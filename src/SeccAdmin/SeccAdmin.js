@@ -8,16 +8,23 @@
  *************************************************/
 import { React, useState, useEffect  } from "react";
 
-import {Typography, Grid, Button, Dialog} from "@material-ui/core";
+import {Typography, Grid, Button, Dialog, ButtonBase} from "@material-ui/core";
 import CardTienda from "./Componente/CardTienda";
 import Formulario from "../SeccFormulario/Formulario";
 import fire from "../fire";
 import {TiendaDoc} from "../Entidades/TiendaDoc";
+import {IconArrowLeft} from "@tabler/icons";
 
-const SeccAdmin = () => {
+const SeccAdmin = (props) => {
+    const {setFormu,setLanding} = props;
     const [tiendas,setTiendas] = useState([1,2,3]);
     const [open,setOpen] = useState(false);
     const [itemDetalle,setItemDetalle] = useState('');
+
+    const salir = () =>{
+        setFormu(false);
+        setLanding(true)
+    }
 
     const abrirDetalle = (item) =>{
         setItemDetalle(item);
@@ -53,7 +60,14 @@ const SeccAdmin = () => {
       sx={{padding: 4}}
     >
 
-        <Grid item container>
+        <Grid item container  >
+            <ButtonBase onClick={() => salir()} >
+                <IconArrowLeft color={"#fff"} size={"1.5rem"} />
+            </ButtonBase>
+
+        </Grid>
+
+        <Grid item container sx={{marginTop: 2}} >
 
           <Typography sx={{fontSize: 24, fontWeight: 600, color: "#fff"}} >Tiendas Creadas</Typography>
         </Grid>

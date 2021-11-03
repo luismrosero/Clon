@@ -188,7 +188,7 @@ function App() {
 
           {tendero != '' && !recepcion ? <SeccTendero tendero={tendero}/> : ''}
 
-          {formu !== false && !recepcion ? <SeccAdmin /> : ''}
+          {formu !== false && !recepcion ? <SeccAdmin setFormu={setFormu} setLanding={setLanding} /> : ''}
 
           {/* <Switch>
             <Route exact path="/recepcion">
