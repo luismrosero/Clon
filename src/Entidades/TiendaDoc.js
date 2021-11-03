@@ -18,6 +18,8 @@ export function TiendaDoc(doc) {
   this.envio = doc.data().envio;
   this.numPagos = doc.data().numPagos;
   this.nequi = doc.data().nequi;
+  this.usuario = doc.data().usuario;
+  this.pass = doc.data().pass;
 
 
   return this;

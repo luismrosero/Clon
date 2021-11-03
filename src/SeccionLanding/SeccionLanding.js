@@ -19,14 +19,11 @@ const SeccionLanding = (props) => {
 
   return (
     <>
-    <Grid container direction="row" justifyContent="center" alignItems="center">
+    <Grid container direction="row" justifyContent="flex-end" alignItems="center">
       <Grid item sx={{ padding: 4 }}>
         <Button variant="contained" onClick={() => abrirLogin()} >Ingresar a como tendero</Button>
       </Grid>
 
-      <Grid item sx={{ padding: 4 }}>
-        <Button variant="contained">Crear tienda</Button>
-      </Grid>
     </Grid>
 
 

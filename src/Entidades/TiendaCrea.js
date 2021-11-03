@@ -1,5 +1,5 @@
 export function TiendaCrea(nombre, descripcion, direccion, telefono, color, acento, logo, historias, face, insta,
-                           nequi, numPagos, valEnvio, empresas, nomEmpresa, vendedores, categorias) {
+                           nequi, numPagos, valEnvio, empresas, nomEmpresa, vendedores, categorias, email, pass) {
 
 
   let nom = nombre.replaceAll(" ","");
@@ -43,6 +43,8 @@ export function TiendaCrea(nombre, descripcion, direccion, telefono, color, acen
   numPagos: numPagos, // numero wass que recibe el pado //
   nequi:  nequi, // numero cuenta nequi //
   envio: parseInt(valEnvio),  //valor de envio de todos los pedidos //
+    usuario: email,
+    pass: pass,
 
   }
 

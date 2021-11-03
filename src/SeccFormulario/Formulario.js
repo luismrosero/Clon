@@ -17,6 +17,9 @@ import fire from "../fire";
 
 const Formulario = (props) => {
     const {cerrar, itemDetalle} = props;
+    const [email,setEmail] = useState('');
+    const [pass,setPass] = useState('');
+
     const [nombre,setNombre] = useState('');
     const [descripcion,setDescripcion] = useState('');
     const [direccion,setDireccion] = useState('');
@@ -44,6 +47,7 @@ const Formulario = (props) => {
     const [vwass,setVWass] = useState('');
     const [vImg,setVImg] = useState('');
     ////////////////////////////////////////////////
+
 
 
     const addVendedor = () => {
@@ -78,14 +82,50 @@ const Formulario = (props) => {
 
     const guardar = () =>{
         let tien = new TiendaCrea(nombre, descripcion, direccion, telefono, color, acento, logo, historias, face, insta,
-            nequi, numPagos, valEnvio, empresas, nomEmpresa, vendedores, categorias)
+            nequi, numPagos, valEnvio, empresas, nomEmpresa, vendedores, categorias,email, pass )
 
-       fire.firestore().collection("tiendas").doc(tien.id).set(tien).then((dox) =>{
-            alert("Tienda Guardada")
-           setId(tien.id);
-        }).catch((err) =>{
-            console.log(err);
-        })
+
+
+
+
+        if (id !== ''){
+            fire.firestore().collection("tiendas").doc(tien.id).set(tien).then((dox) =>{
+                alert("Cambios Guardados");
+            }).catch((err) =>{
+                alert(err)
+            });
+        }else {
+
+
+            fire.auth().createUserWithEmailAndPassword(email, pass).then((dox) => {
+
+
+                fire.firestore().collection("tiendas").doc(tien.id).set(tien).then((dox) => {
+                    alert("Tienda Guardada")
+                    setId(tien.id);
+                    fire.firestore().collection("tendero").doc(email).set({
+                        email: email,
+                        idTienda: tien.id,
+                    }).then((dox) => {
+                            fire.auth().signOut()
+                    }).catch((err) => {
+                        alert(err)
+                    });
+
+
+                }).catch((err) => {
+                    console.log(err);
+                })
+
+            }).catch((err) => {
+
+                alert(err)
+
+            });
+
+
+        }
+
 
     /*    fire.firestore().collection("prueba").doc("aaa").set({hola: "saludo"}).then((dox) =>{
             alert("subio")
@@ -302,6 +342,9 @@ const Formulario = (props) => {
                 setVendedores((vendedores) => vendedores.concat(ven))
             }
 
+            setEmail(itemDetalle.usuario);
+            setPass(itemDetalle.pass)
+
 
         }
 
@@ -338,6 +381,20 @@ const Formulario = (props) => {
 
                </Grid>
 
+          </Grid>
+
+          <Grid item container>
+              <Typography sx={{fontSize: 20, fontWeight: 600, marginTop: 4}} >Credenciales</Typography>
+          </Grid>
+
+          <Grid item lg={4} >
+              <TextField label={"correo de usuario"} variant={"outlined"} color={"primary"} fullWidth value={email}
+                         onChange={(e) => setEmail(e.target.value)} />
+          </Grid>
+
+          <Grid item lg={8} >
+              <TextField label={"contraseña"} variant={"outlined"} color={"primary"} fullWidth value={pass}
+                         onChange={(e) => setPass(e.target.value)} />
           </Grid>
 
 
