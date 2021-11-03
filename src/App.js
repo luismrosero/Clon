@@ -9,6 +9,8 @@ import SeccionTienda from './SeccionTienda/SeccionTienda/SeccionTienda';
 import Tema from './Tema';
 import SeccTendero from './SeccionTendero/SeccTendero/SeccTendero';
 import {Helmet} from 'react-helmet';
+import Formulario from "./SeccFormulario/Formulario";
+import SeccAdmin from "./SeccAdmin/SeccAdmin";
 
 function App() {
   const [landign, setLanding] = useState(false);
@@ -18,11 +20,17 @@ function App() {
   const [recepcion, setRecepcio] = useState(false);
   const [datos, setDatos] = useState('');
   const [referencia, setReferencia] = useState('');
+  const [formu, setFormu] = useState(false)
 
   const ingreso = (tend) => {
     setLanding(false);
     setTendero(tend);
   };
+
+  const ingresoFormu = () =>{
+    setLanding(false);
+    setFormu(true);
+  }
 
   const getDatos = (ref, id) => {
     if (ref === '-1') {
@@ -158,7 +166,7 @@ function App() {
       {/*<CreadorTienda/> */}
 
       <Helmet>
-        <title>{'Bodega Moda Tenis'} </title>
+        <title>{'Starfy'} </title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
@@ -167,7 +175,7 @@ function App() {
         <ThemeProvider theme={Tema}>
         <Router>
           {landign === true && !recepcion && tienda == '' ? (
-            <SeccionLanding tendero={tendero} ingreso={ingreso}/>
+            <SeccionLanding tendero={tendero} setFormu={ingresoFormu} ingreso={ingreso}/>
           ) : (
             ''
           )}
@@ -179,6 +187,8 @@ function App() {
           {admin && !recepcion ? <h1>Admin</h1> : ''}
 
           {tendero != '' && !recepcion ? <SeccTendero tendero={tendero}/> : ''}
+
+          {formu !== false && !recepcion ? <SeccAdmin /> : ''}
 
           {/* <Switch>
             <Route exact path="/recepcion">
