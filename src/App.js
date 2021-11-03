@@ -166,7 +166,7 @@ function App() {
       {/*<CreadorTienda/> */}
 
       <Helmet>
-        <title>{'Starfy'} </title>
+        <title>{'Clone'} </title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
